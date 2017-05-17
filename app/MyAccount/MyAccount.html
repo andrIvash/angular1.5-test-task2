@@ -1,0 +1,50 @@
+<style>
+    .ng-dirty.ng-invalid {
+        border-color: #FA787E;
+    }
+
+    .ng-dirty.ng-valid {
+        border-color: #78FA89;
+    }
+
+</style>
+
+<form name="vm.myForm" novalidate>
+    <div class="form-group">
+        <label>Имя</label>
+        <input class="form-control" data-ng-model="vm.newUser.name" type="text" placeholder="Имя" required ng-minlength="3" name="userName">
+    </div>
+
+    <div ng-messages="vm.myForm.userName.$error" ng-if="vm.myForm.userName.$dirty">
+
+        <div ng-message="required" class="alert alert-danger" role="alert">А где имя?</div>
+        <div ng-message="minlength" class="alert alert-danger" role="alert">Имя слишком короткое</div>
+
+    </div>
+
+    <div class="form-group">
+        <label>E-mail</label>
+        <input class="form-control" data-ng-model="vm.newUser.email" type="text" placeholder="E-mail" required data-ng-pattern="/^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/" name="userEmail">
+    </div>
+
+    <div role="alert" ng-messages="vm.myForm.userEmail.$error" ng-if="vm.myForm.userEmail.$dirty">
+        <div ng-message="required" class="alert alert-danger">А где email?</div>
+        <div ng-message="pattern" class="alert alert-danger">Email не прошел валидацию</div>
+    </div>
+
+
+    <div class="form-group">
+        <label>phone</label>
+        <input class="form-control" data-ng-model="vm.newUser.phone" type="text" placeholder="phone" data-ng-pattern="/^[0-9\-\+]{9,15}$/" name="userPhone">
+    </div>
+
+    <div role="alert" ng-messages="vm.myForm.userPhone.$error" ng-if="vm.myForm.userPhone.$dirty">
+        <div ng-message="pattern" class="alert alert-danger">phone не прошел валидацию</div>
+    </div>
+
+    
+    <button type="submit" class="btn btn-default" data-ng-click="vm.addUser(vm.newUser)" data-ng-disabled="vm.myForm.$invalid">Добавить
+    </button>
+
+
+</form>
