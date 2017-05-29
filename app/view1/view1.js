@@ -2,8 +2,8 @@
 
 angular.module('myApp.view1', [])
 
-    .controller('View1Ctrl', function ($scope) {
-        $scope.pokemons = [{
+    .controller('View1Ctrl', function () {
+        this.pokemons = [{
             "abilities": [
                 "Overgrow"
             ],
@@ -113,6 +113,6 @@ angular.module('myApp.view1', [])
             ]
         }];
 
-        $scope.myOrderProperty = 'id';
+        this.myOrderProperty = 'id';
 
     });

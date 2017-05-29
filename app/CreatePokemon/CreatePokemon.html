@@ -9,10 +9,13 @@
 
 </style>
 
-<form name="vm.pokemonForm" novalidate>
+<form id="addNewForm" name="vm.pokemonForm" novalidate>
     <div class="form-group">
         <label>Имя</label>
-        <input class="form-control" data-ng-model="vm.newPokemon.name" type="text" placeholder="Имя" required ng-minlength="3" name="pokemonName">
+        <input class="form-control" data-ng-model="vm.newPokemon.name"
+               type="text" placeholder="Имя" required ng-minlength="3"
+               name="pokemonName"
+               ng-focus="vm.result=null">
     </div>
 
     <div ng-messages="vm.pokemonForm.pokemonName.$error" ng-if="vm.pokemonForm.pokemonName.$dirty">
@@ -24,7 +27,9 @@
 
     <div class="form-group">
         <label>Вес</label>
-        <input class="form-control" data-ng-model="vm.newPokemon.weight" type="text" placeholder="Вес" data-ng-pattern="/^(\d)+$/" name="pokemonWeight">
+        <input class="form-control" data-ng-model="vm.newPokemon.weight" type="text"
+               placeholder="Вес" data-ng-pattern="/^(\d)+$/" name="pokemonWeight"
+               ng-focus="vm.result=null">
     </div>
 
     <div role="alert" ng-messages="vm.pokemonForm.pokemonWeight.$error" ng-if="vm.pokemonForm.pokemonWeight.$dirty">
@@ -37,10 +42,13 @@
             Активен
         </label>
     </div>
-    <button type="submit" class="btn btn-default" data-ng-click="vm.addPokemon(vm.newPokemon)" data-ng-disabled="vm.pokemonForm.$invalid">Добавить
+    <button type="submit" id="addNew" class="btn btn-default" data-ng-click="vm.addPokemon(vm.newPokemon)" data-ng-disabled="vm.pokemonForm.$invalid">Добавить
     </button>
-
-    <pre>pokemonForm.pokemonName.$error = {{ vm.pokemonForm.pokemonName.$error | json }}</pre>
-    <pre>pokemonForm.pokemonWeight.$error = {{ vm.pokemonForm.pokemonWeight.$error | json }}</pre>
-
+    <!--
+    <pre >pokemonForm.pokemonName.$error = {{ vm.pokemonForm.pokemonName.$error | json }}</pre>
+    <pre >pokemonForm.pokemonWeight.$error = {{ vm.pokemonForm.pokemonWeight.$error | json }}</pre>
+    -->
 </form>
+<hr>
+<div id="result" style="color:green;"> {{vm.result}} </div>
+<hr>

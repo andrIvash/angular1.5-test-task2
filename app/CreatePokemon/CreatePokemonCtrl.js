@@ -10,6 +10,7 @@ angular
         console.log(myPokemon);
         vm.newPokemon = {};
         vm.pokemonForm.$setPristine();
+        vm.result = 'Pokemon Add';
     };
 
 });
